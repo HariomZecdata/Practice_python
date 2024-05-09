@@ -14,12 +14,33 @@ try:
         print("Failed to connect to the database")
     # Connection successful, proceed with your code...
     mycursor = mydb.cursor()
-    # Continue with your operations...
-      
-    #   create table 
-    # res = mycursor.execute("CREATE TABLE customers (firstname VARCHAR(20), lastname VARCHAR(20),address VARCHAR(255))")
-    # print(res)
+  # create table 
+    def createTable(sql):
+        try:
+            mycursor.execute(sql)
+            print("Table Create successfully")
+        except Exception as e:
+             print(e)
 
+    #Insert row into table
+    def addData(sql):
+        try:
+           mycursor.execute(sql)
+           mydb.commit()
+           print("Data inserted successfully") 
+        except Exception as e:
+            print("Error:", e)
+            mydb.rollback()
+
+         
+
+    #fetch data from table     
+    def getData(sql):
+        try:
+            mycursor.execute(sql)
+            return mycursor.fetchall()
+        except Exception as e:
+            print("Error:", e)
 
 except mysql.connector.Error as err:
     print("Error:", err)
