@@ -15,6 +15,11 @@ try:
     # Connection successful, proceed with your code...
     mycursor = mydb.cursor()
     # Continue with your operations...
+      
+    #   create table 
+    # res = mycursor.execute("CREATE TABLE customers (firstname VARCHAR(20), lastname VARCHAR(20),address VARCHAR(255))")
+    # print(res)
+
 
 except mysql.connector.Error as err:
     print("Error:", err)
