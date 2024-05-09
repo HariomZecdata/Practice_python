@@ -1,23 +1,23 @@
 import pandas as pd
 import database as db 
-# Using raw string literal
+
 df = pd.read_csv(r"/home/hp/Downloads/salaries (2).csv")
+print(df)
 
-# Print the arrays
-try:
-    for index, row in df.iterrows():
-        data_tuple = tuple(row)  # Convert the row to a tuple
-    # Define your SQL INSERT query
-        sql_query = "INSERT INTO salaries VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"  # Adjust column names as needed
-    # Execute the SQL query with the data tuple
-        db.mycursor.execute(sql_query, data_tuple)
+# try:
+#     for row in df.iterrows():
+#         data_tuple = tuple(row)  # Convert the row to a tuple
+#     # Define your SQL INSERT query
+#         sql_query = "INSERT INTO salaries VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"  
+#     # Execute the SQL query with the data tuple
+#         db.mycursor.execute(sql_query, data_tuple)
 
-    # Commit the changes and close the connection
-    db.mydb.commit()    
-    print("All the reacode inserted successully")
-except Exception as e:
-        print("Error:", e)
-        db.mydb.rollback()
+#     # Commit the changes 
+#     db.mydb.commit()    
+#     print("All the reacode inserted successully")
+# except Exception as e:
+#         print("Error:", e)
+#         db.mydb.rollback()
 
 # create table salaries
 # sql="CREATE TABLE s
