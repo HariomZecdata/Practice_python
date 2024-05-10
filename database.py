@@ -4,9 +4,10 @@ try:
     mydb = mysql.connector.connect(
         host="127.0.0.1",
         user="root",
-        password="12345",  # Replace with your actual password
+        password="12345",  
         database="products"
     )
+
     if mydb.is_connected():
         print("Connected to the database")
         # Further operations can be performed here
@@ -14,36 +15,78 @@ try:
         print("Failed to connect to the database")
     # Connection successful, proceed with your code...
     mycursor = mydb.cursor()
-  # create table 
-    def createTable(sql):
-        try:
-            mycursor.execute(sql)
-            print("Table Create successfully")
-        except Exception as e:
-             print(e)
 
-    #Insert row into table
-    def addData(sql):
+
+
+    #get data from databse
+    def get_data(sql):
         try:
-           mycursor.execute(sql)
-           mydb.commit()
-           print("Data inserted successfully") 
+
+            #execute sql query
+            mycursor.execute(sql)
+
+            #fetch all the row from database
+            myresult = mycursor.fetchall()
+            if len(myresult)==0:
+                return None
+            else:
+                return myresult
+        except Exception as e:
+            print(e)
+        finally:
+            if mydb.is_connected():
+
+                mycursor.close()
+                mydb.close()
+                print("MySQL connection is closed")
+                  
+
+
+
+    # Create table 
+    def create_table(sql):
+        try:
+
+            #execute sql query
+            mycursor.execute(sql)
+            print("Table created successfully")
+        except Exception as e:
+            print(e)
+        finally:
+            if mydb.is_connected():
+
+                mycursor.close()
+                mydb.close()
+                print("MySQL connection is closed")
+
+
+
+    # Insert row into table
+    def add_data(sql):
+        try:
+
+            #execute sql query
+            mycursor.execute(sql)
+
+            #commit changes
+            mydb.commit()
+            print("Data inserted successfully") 
         except Exception as e:
             print("Error:", e)
             mydb.rollback()
+        finally:
+            if mydb.is_connected():
 
-         
+                mycursor.close()
+                mydb.close()
+                print("MySQL connection is closed")
 
-    #fetch data from table     
-    def getData(sql):
-        try:
-            mycursor.execute(sql)
-            return mycursor.fetchall()
-        except Exception as e:
-            print("Error:", e)
 
-except mysql.connector.Error as err:
-    print("Error:", err)
+
+except mysql.connector.Error as error:
+    print("Error while connecting to MySQL:", error)
+
+
 
 
 
