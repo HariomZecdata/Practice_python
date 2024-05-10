@@ -1,3 +1,4 @@
+
 print('hello world')
 
 li= ["apple","banana","mango","orange"]
@@ -13,6 +14,7 @@ else :
 
 y="Hariom Asati"
 print(type(y))
+
 
 # https://github.com/HariomZecdata/Practice_python.git
 
