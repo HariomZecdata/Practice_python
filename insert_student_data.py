@@ -15,3 +15,6 @@ SQL = "INSERT INTO STUDENT (Name, Age, Address) VALUES ('Gopal ASATI', 23, 'Ratl
 
 #insert student data in database using add_data function
 db.add_data(MYDB, MYCURSOR ,SQL)
+
+# database connection close
+db.close_connection(MYDB , MYCURSOR)

@@ -10,3 +10,6 @@ SQL = "INSERT INTO subjects (subname) VALUES ('TOC')"
 
 #insert data in databse using add_data function
 db.add_data(MYDB, MYCURSOR, SQL)
+
+# database connection close
+db.close_connection(MYDB , MYCURSOR)

@@ -29,3 +29,6 @@ try:
 
 except Exception as e:
     print("error message:", e)
+
+# database connection close
+db.close_connection(MYDB , MYCURSOR)

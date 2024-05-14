@@ -115,7 +115,6 @@ if __name__ == "__main__":
 
     # Insert data
     add_data(MYDB, MYCURSOR, ADD_DATA_SQL)
-    
     # Retrieve data
     result = get_data(MYCURSOR, GET_DATA_SQL)
     print("Retrieved data:", result)
