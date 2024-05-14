@@ -1,28 +1,31 @@
-import database as db  #import  database file
+"""
+import database module 
 
+"""
+
+import database as db
+
+MYDB, MYCURSOR = db.establish_connection()
 
 try:
- 
-    #sql query for create student table 
-    student = "CREATE TABLE STUDENT(ID INT NOT NULL AUTO_INCREMENT,NAME VARCHAR(20) NOT NULL,AGE INT NOT NULL, ADDRESS CHAR (25),  PRIMARY KEY (ID))"
-  
-    #create table from database using create_table function
-    db.create_table(student)
+    # SQL query for creating the student table
+    STUDENT = "CREATE TABLE STUDENT(ID INT NOT NULL AUTO_INCREMENT, "
+    STUDENT += "NAME VARCHAR(20) NOT NULL, AGE INT NOT NULL, ADDRESS CHAR(25), PRIMARY KEY (ID))"
+    # Create the student table
+    db.create_table(MYCURSOR, STUDENT)
 
-    #sql query for create subject table
-    subject = "create table subjects(id INT NOT NULL AUTO_INCREMENT ,subname VARCHAR (20)  ,PRIMARY KEY (id))"
+    # SQL query for creating the subject table
+    SUBJECT = "CREATE TABLE SUBJECTS(ID INT NOT NULL AUTO_INCREMENT, "
+    SUBJECT += "SUBNAME VARCHAR(20), PRIMARY KEY (ID))"
+    # Create the subject table
+    db.create_table(MYCURSOR, SUBJECT)
 
-    #crete table from databse using create_table function
-    db.create_table(subject)
-
-    #sql query for create student_subject table
-    student_subject = "create table stusub(stuid INT, subid INT, FOREIGN KEY (stuid) REFERENCES STUDENT(ID), FOREIGN KEY (subid) REFERENCES subjects(id) )"
-    
-    #create table from database using create_table function
-    db.create_table()
-     
-
+    # SQL query for creating the student_subject table
+    STUDENT_SUBJECT = "CREATE TABLE STUSUB(STUID INT, SUBID INT, "
+    STUDENT_SUBJECT += "FOREIGN KEY (STUID) REFERENCES STUDENT(ID),"
+    STUDENT_SUBJECT += " FOREIGN KEY (SUBID) REFERENCES SUBJECTS(ID))"
+    # Create the student_subject table
+    db.create_table(MYCURSOR, STUDENT_SUBJECT)
 
 except Exception as e:
-    print(e)
- 
+    print("error message:", e)

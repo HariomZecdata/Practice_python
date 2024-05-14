@@ -1,8 +1,17 @@
-import database as db #import  database file
+"""
+ import Database  module 
+
+"""
+
+import database as db
+
+# connection establish for DB
+MYDB, MYCURSOR = db.establish_connection()
 
 
 #sql query for insert data into student table
-sql = "INSERT INTO STUDENT (Name, Age, Address) VALUES ('Yash ASATI', 23, 'Ratlam')"
+SQL = "INSERT INTO STUDENT (Name, Age, Address) VALUES ('Gopal ASATI', 23, 'Ratlam')"
 
-#insert student data in database
-db.add_data(sql)
+
+#insert student data in database using add_data function
+db.add_data(MYDB, MYCURSOR ,SQL)

@@ -1,8 +1,12 @@
+"""
+import database module
+"""
 import database as db  #import  database file
 
+MYDB , MYCURSOR = db.establish_connection() #start database connection
 
 #sql query for insert data into subjects table
-sql = "INSERT INTO subjects (subname) VALUES ('TOC')"
+SQL = "INSERT INTO subjects (subname) VALUES ('TOC')"
 
 #insert data in databse using add_data function
-db.add_data(sql)
+db.add_data(MYDB, MYCURSOR, SQL)
