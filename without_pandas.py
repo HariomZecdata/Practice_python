@@ -21,5 +21,3 @@ try:
             db.add_data(MYDB, MYCURSOR, SQL_QUERY)
 except FileNotFoundError:
     print("File not found.")
-except Exception as e:
-    print("Error:", e)
