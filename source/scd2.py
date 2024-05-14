@@ -1,7 +1,7 @@
 """
 import database module
 """
-import database as db
+import common.database as db
 
 SQL = "INSERT INTO employee VALUES (%s, %s, %s)"
 VALUE = ('Hariom Asati', '940000', '1')

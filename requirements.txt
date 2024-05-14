@@ -1,2 +1,4 @@
 mysql-connector-python==8.4.0
 pandas==2.0.3
+pylint == 3.1.0
+pytest == 8.2.0
